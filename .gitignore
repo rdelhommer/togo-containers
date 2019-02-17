@@ -1,3 +1,7 @@
+client/dist
+server/dist
+shared/dist
+
 # Logs
 logs
 *.log

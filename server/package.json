@@ -1,0 +1,31 @@
+{
+  "name": "express-react-ts-starter-server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start:prod": "node dist/app.js",
+    "start": "NODE_PATH=./src ts-node ./src/app.ts",
+    "start-win": "set NODE_PATH=./src; ts-node ./src/app.ts",
+    "start:dev:seed": "NODE_PATH=./src MONGO_SEED=true ts-node ./src/app.ts",
+    "watch": "nodemon --exec 'NODE_PATH=./src ts-node ./src/app.ts'",
+    "watch-win": "nodemon --exec \"set NODE_PATH=./src; ts-node ./src/app.ts\"",
+    "watch:seed": "nodemon --exec 'NODE_PATH=./src MONGO_SEED=true ts-node ./src/app.ts'"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/express": "^4.16.1",
+    "@types/node": "^11.9.4",
+    "@types/winston": "^2.3.8",
+    "nodemon": "^1.18.10",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "express": "^4.16.2",
+    "express-react-ts-starter-shared": "link:../shared",
+    "helmet": "^3.15.1",
+    "morgan": "^1.9.0",
+    "winston": "^2.4.0"
+  }
+}

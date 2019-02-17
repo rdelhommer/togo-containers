@@ -1,0 +1,26 @@
+{
+  "name": "express-react-ts-starter",
+  "version": "1.0.0",
+  "description": "Starter TypeScript project with Express backend and React frontend",
+  "main": "index.js",
+  "scripts": {
+    "buildshared": "yarn install --cwd shared; tsc -p shared --skipLibCheck; echo '===== Finished Building Shared ====='",
+    "buildclient": "yarn install --cwd client; cd client; webpack; cd ..; echo '===== Finished Building Client ====='",
+    "buildserver": "yarn install --cwd server; tsc -p server --skipLibCheck; echo '===== Finished Building Server ====='",
+    "postinstall": "npm run buildshared; npm run buildclient; npm run buildserver",
+    "start": "node server/dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdelhommer/express-react-ts-starter.git"
+  },
+  "author": "Rick Delhommer",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/rdelhommer/express-react-ts-starter/issues"
+  },
+  "homepage": "https://github.com/rdelhommer/express-react-ts-starter#readme",
+  "devDependencies": {
+    "typescript": "^3.3.3"
+  }
+}
