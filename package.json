@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "buildshared": "yarn install --cwd shared; tsc -p shared --skipLibCheck; echo '===== Finished Building Shared ====='",
-    "buildclient": "yarn install --cwd client; cd client; webpack; cd ..; echo '===== Finished Building Client ====='",
+    "buildclient": "yarn install --cwd client; cd client; webpack --config webpack.prod.js; cd ..; echo '===== Finished Building Client ====='",
     "buildserver": "yarn install --cwd server; tsc -p server --skipLibCheck; echo '===== Finished Building Server ====='",
     "postinstall": "npm run buildshared; npm run buildclient; npm run buildserver",
     "start": "node server/dist/app.js"
@@ -20,7 +20,9 @@
     "url": "https://github.com/rdelhommer/express-react-ts-starter/issues"
   },
   "homepage": "https://github.com/rdelhommer/express-react-ts-starter#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "compression-webpack-plugin": "^2.0.0"
+  },
   "dependencies": {
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^2.1.0",
@@ -29,6 +31,7 @@
     "typescript": "^3.3.3333",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
+    "webpack-merge": "^4.2.1",
     "webpack-shell-plugin": "^0.5.0"
   }
 }

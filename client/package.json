@@ -4,9 +4,9 @@
   "description": "Starter project React front end",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=\"development\"",
-    "watch": "webpack --watch --mode=\"development\"",
-    "build-prod": "webpack"
+    "build": "webpack --config webpack.dev.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "build-prod": "webpack --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "@types/react-router": "^4.4.4",
     "@types/webpack": "^4.4.24",
     "awesome-typescript-loader": "^5.2.1",
+    "compression-webpack-plugin": "^2.0.0",
     "css-loader": "^2.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
