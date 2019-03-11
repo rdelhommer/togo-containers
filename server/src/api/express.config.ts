@@ -57,14 +57,22 @@ class App {
       : path.resolve(`./server/dist/public`)
 
     // static content first
-    this.express.use('/', express.static(publicPath));
+    this.express.use('/', (req, res, next) => {
+      if (req.path.endsWith('.js.gz')) {
+        res.setHeader('Content-Type', 'text/javascript')
+        res.setHeader('Content-Encoding', 'gzip')
+      }
+
+      next()
+    }, express.static(publicPath));
 
     // api stuff
     this.express.use('/api/auth', authRouter);
 
+
     // setup the fallback route last so we dont overwrite anything
-    this.express.use('*', (req, resp) => {
-      resp.sendFile(`${publicPath}/index.html`)
+    this.express.use('*', (req, res) => {
+      res.sendFile(`${publicPath}/index.html`)
     })
   }
 }
