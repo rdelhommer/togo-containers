@@ -17,18 +17,23 @@ class App {
     this.routes();
   }
 
-  start() {
-    const server = http.createServer(this.express);
-    server.on('error', (err: Error) => {
-      logger.error('Could not start server to due the following error')
-      logger.error(err.message);
-    });
+  async start() {
+    return new Promise(resolve => {
+      const server = http.createServer(this.express);
+      server.on('error', (err: Error) => {
+        logger.error('Could not start server to due the following error')
+        logger.error(err.message);
 
-    server.on('listening', () => {
-      logger.info(`Started server at ${config.express.host}:${config.express.port}`)
-    });
-
-    server.listen(config.express.port, config.express.host);
+        throw err
+      });
+  
+      server.on('listening', () => {
+        logger.info(`Started server at ${config.express.host}:${config.express.port}`)
+        resolve()
+      });
+  
+      server.listen(config.express.port, config.express.host);
+    })
   }
 
   private middleware(): void {
@@ -46,15 +51,20 @@ class App {
   }
 
   private routes() {
+    let cwd = process.cwd().split('/').pop()
+    let publicPath = cwd === 'server' 
+      ? path.resolve('./dist/public')
+      : path.resolve(`./server/dist/public`)
+
     // static content first
-    this.express.use('/', express.static(path.resolve('./dist/public')));
+    this.express.use('/', express.static(publicPath));
 
     // api stuff
     this.express.use('/api/auth', authRouter);
 
     // setup the fallback route last so we dont overwrite anything
     this.express.use('*', (req, resp) => {
-      resp.sendFile(path.resolve('./server/dist/public/index.html'))
+      resp.sendFile(`${publicPath}/index.html`)
     })
   }
 }

@@ -1,3 +1,9 @@
+require('dotenv').config()
+
 import { appRouter } from './api/express.config';
 
-appRouter.start()
+async function gogo() {
+  await appRouter.start()
+}
+
+gogo()

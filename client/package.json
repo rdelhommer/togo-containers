@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "express-react-ts-starter-shared": "link:../shared",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-router": "^4.3.1"
