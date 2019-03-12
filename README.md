@@ -1,17 +1,31 @@
-# express-react-ts-starter
-Skeleton TypeScript project with Express backend and React frontend
+# express-ts-starter
+Skeleton TypeScript project with Express backend and React and Aurelia frontends
 
 ## Install Dependencies
 This project relies on yarn to properly link the shared interfaces to both the front and backend projects
 * yarn - ```npm install -g yarn```
 
 ## Installation
-Install dependencies and build the shared project first so that the client and server can properly link to it
-* Shared - `cd shared; yarn; npm run build`
-* Client - `cd client; yarn`
-* Server - `cd server; yarn`
+### Shared
+Installs dependencies and builds the shared project so it can be linked by the client and server projects
+`cd shared; yarn; npm run build`
+### Server
+Install dependencies
+`cd server; yarn`
+### Client
+Pick the client you wish to run.  Installs dependencies
+* Aurelia Client - `cd client-aurelia; yarn`
+* React Client - `cd client-react; yarn`
 
 ## Running
-* Shared - `cd shared; npm run watch`
-* Client - `cd client; npm run watch`
-* Server - `cd server; npm run watch`
+You'll have three running processes
+### Shared
+Runs tsc in watch mode
+`cd shared; npm run watch`
+### Server
+Starts a nodemon task that runs ts-node
+`cd server; npm run watch`
+### Client
+Pick the client you wish to run.  Runs webpack in watch mode
+* Aurelia Client - `cd client-aurelia; npm run watch`
+* React Client - `cd client-react; npm run watch`
