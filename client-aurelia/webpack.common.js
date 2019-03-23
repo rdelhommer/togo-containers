@@ -32,9 +32,6 @@ module.exports = {
     'rm -rf ../server/dist',
   ],
   shellPluginOnBuildExitCommon: [
-    'echo "Copy images to dist..."',
-    'mkdir -p ./dist/images',
-    'cp -r ./images/. ./dist/images',
     'echo "Copy dist to server public..."',
     'mkdir -p ../server/dist/public/react',
     'cp -r dist/. ../server/dist/public',
