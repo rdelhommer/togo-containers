@@ -7,7 +7,16 @@ module.exports = merge(common.config, {
   devtool: 'eval-source-map',
   module: {
     rules: [
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.css$/i,
+        loader: 'css-loader',
+        issuer: /\.html?$/i
+      },
+      {
+        test: /\.css$/i,
+        loader: ['style-loader', 'css-loader'],
+        issuer: /\.[tj]s$/i
+      },
       common.htmlRule,
       common.tsRule,
       common.jsPre
