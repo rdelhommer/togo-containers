@@ -19,6 +19,7 @@ Pick the client you wish to run.  Installs dependencies
 
 * Aurelia Client - `cd client-aurelia; yarn`
 * React Client - `cd client-react; yarn`
+* RE:DOM Client - `cd client-redom; yarn`
 
 ## Running
 You'll have three running processes
@@ -35,3 +36,4 @@ Pick the client you wish to run.  Runs webpack in watch mode
 
 * Aurelia Client - `cd client-aurelia; npm run watch`
 * React Client - `cd client-react; npm run watch`
+* RE:DOM Client - `cd client-redom; npm run watch`

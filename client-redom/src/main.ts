@@ -1,11 +1,5 @@
-import { Aurelia, PLATFORM } from 'aurelia-framework'
+import { el, mount } from "redom";
 
-export function configure(aurelia: Aurelia) {
-  aurelia.use
-    .standardConfiguration()
-
-  aurelia.start()
-    .then(() => {
-      aurelia.setRoot(PLATFORM.moduleName('app'))
-    });
-}
+const hello = el("h1", "Hello world!");
+console.log(document.body);
+mount(document.body, hello);

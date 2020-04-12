@@ -1,10 +1,6 @@
-let { AureliaPlugin } = require('aurelia-webpack-plugin')
-
 module.exports = {
   config: {
-    entry: {
-      main: 'aurelia-bootstrapper'
-    },
+    entry: './src/main.ts',
     output: {
       filename: 'bundle.js',
       path: __dirname + '/dist'
@@ -14,10 +10,6 @@ module.exports = {
       extensions: ['.ts', '.js', '.json'],
       modules: ['src', 'node_modules']
     },
-  
-    plugins: [
-      new AureliaPlugin()
-    ]
   },
 
   tsRule: { test: /\.ts?$/, loader: "awesome-typescript-loader" },
