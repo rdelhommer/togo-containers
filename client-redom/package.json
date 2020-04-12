@@ -1,7 +1,7 @@
 {
-  "name": "express-ts-starter-client-aurelia",
+  "name": "express-ts-starter-client-redom",
   "version": "1.0.0",
-  "description": "Starter project Aurelia front end",
+  "description": "Starter project RE:DOM front end",
   "main": "index.js",
   "scripts": {
     "test": "tsc",
@@ -12,16 +12,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/webpack": "^4.4.24",
+    "@types/webpack": "^4.41.11",
     "awesome-typescript-loader": "^5.2.1",
-    "compression-webpack-plugin": "^2.0.0",
-    "css-loader": "^2.1.0",
+    "compression-webpack-plugin": "^3.1.0",
+    "css-loader": "^3.5.2",
     "source-map-loader": "^0.2.4",
-    "style-loader": "^0.23.1",
-    "typescript": "^3.3.3",
-    "webpack": "^4.29.4",
-    "webpack-cli": "^3.2.3",
-    "webpack-merge": "^4.2.1",
+    "style-loader": "^1.1.3",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2",
     "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
