@@ -1,0 +1,21 @@
+.overlay {
+  position: absolute;
+  color: white;
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+}
+
+.overlay.overlay--visible {
+  opacity: 0.75;
+  top: 0px;
+  left: 0px;
+  transition: opacity 0.15s ease-out;
+}
+
+.overlay.overlay--hidden {
+  opacity: 0;
+  top: -5000px;
+  left: -5000px;
+  transition: opacity 0.15s ease-out, top 0s linear 0.15s, left 0s linear 0.15s;
+}
