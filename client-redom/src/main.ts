@@ -1,5 +1,5 @@
 import { el, mount } from "redom";
+import { App } from "./app";
 
-const hello = el("h1", "Hello world!");
-console.log(document.body);
-mount(document.body, hello);
+
+mount(document.body, new App());

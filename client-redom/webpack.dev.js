@@ -19,7 +19,8 @@ module.exports = merge(common.config, {
       },
       common.htmlRule,
       common.tsRule,
-      common.jsPre
+      common.jsPre,
+      common.imgRule,
     ]
   },
   plugins: [

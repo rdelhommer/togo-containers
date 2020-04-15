@@ -10,7 +10,8 @@ module.exports = merge(common.config, {
       { test: /\.css$/, use: ['style-loader', 'css-loader?minimize'] },
       common.htmlRule,
       common.tsRule,
-      common.jsPre
+      common.jsPre,
+      common.imgRule,
     ]
   },
   plugins: [

@@ -14,6 +14,7 @@ module.exports = {
 
   tsRule: { test: /\.ts?$/, loader: "awesome-typescript-loader" },
   htmlRule: { test: /\.html$/, use: 'html-loader' },
+  imgRule: { test: /\.(gif|jpg|cur|png|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'file-loader?name=images/[name].[ext]' },
 
   // NOTE: What does this do?
   jsPre: { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
