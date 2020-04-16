@@ -1,6 +1,7 @@
 import { el, RedomComponent } from 'redom';
 import { Overlay } from './components/overlay';
 import { Map } from './components/map';
+import { staticData} from './services/static-data';
 
 interface ILocation {
   lat: number;
@@ -22,14 +23,15 @@ export class App implements RedomComponent {
           this.overlay = new Overlay(),
           this.map = new Map()
       )
-
-      this.locations = [{
-        lat: 45.524071,
-        lng: -122.583747
-      }]
   }
 
   onmount() {
+    setTimeout(() => {
+      this.map.update({
+        center: [45.512230,-122.658722],
+        restaurants: staticData
+      })
+    })
     // setTimeout(() => {
     //   this.overlay.update({ 
     //     visible: true, 

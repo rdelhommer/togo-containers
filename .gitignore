@@ -4,6 +4,7 @@ client-aurelia/dist
 client-redom/dist
 server/dist
 shared/dist
+webpack-stats.json
 
 # Logs
 logs

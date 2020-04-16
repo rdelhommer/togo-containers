@@ -5,54 +5,47 @@ import * as L from 'leaflet';
 import { IRedomComponent } from '../interfaces';
 import { el } from 'redom';
 import './styles.css'
+import { RestaurantRead } from 'express-react-ts-starter-shared';
 
 export interface IMapData {
-  center: [number, number]
+  center?: [number, number]
+  restaurants?: RestaurantRead.IRestaurant[]
+  overwriteExisting?: boolean
 }
 
 export class Map implements IRedomComponent {
   el: HTMLElement
-  map: L.Map;
-  center: [number, number] = [51.508, -0.11]
+  map: L.Map
+  currentMarkers: L.Marker[] = []
 
   constructor() {
     this.el = el("div.map")
   }
 
   onmount() {
-    this.map = L.map(this.el).setView(this.center, 11);
+    this.map = L.map(this.el)
 
     L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 18,
       id: 'osm.test'
     }).addTo(this.map);
-    
-    this.randomSeed();
   }
 
-  randomSeed() {
-    for (let i = 0; i < 100; i++) {
-      let markerType = Math.floor(Math.random() * 8)
-      let loc: [number, number] = [this.center[0] + (((Math.random() * 12) - 6) * 0.01), this.center[1] + (((Math.random() * 12) - 6) * 0.01)]
-      switch (markerType) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-          L.marker(loc).addTo(this.map)
-          break;
-        case 4:
-        case 5:
-          L.marker(loc).addTo(this.map)
-          break;
-        case 6:
-          L.marker(loc).addTo(this.map)
-          break;
-        case 7:
-          L.marker(loc).addTo(this.map)
-          break;
-      }
+  update(data: IMapData) {
+    this.map.setView(data.center, 11);
+
+    if (data.overwriteExisting) {
+      this.currentMarkers.forEach(x => {
+        this.map.removeLayer(x)
+      })
+
+      this.currentMarkers = []
     }
+
+    data.restaurants.forEach(x => {
+      let marker = L.marker(x.latLng).addTo(this.map)
+      this.currentMarkers.push(marker)
+    });
   }
 }
