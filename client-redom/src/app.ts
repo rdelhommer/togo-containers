@@ -2,6 +2,7 @@ import { el, RedomComponent } from 'redom';
 import { Overlay } from './components/overlay';
 import { Map } from './components/map';
 import { staticData} from './services/static-data';
+import './styles.css';
 
 interface ILocation {
   lat: number;

@@ -7,6 +7,7 @@ import { el } from 'redom';
 import './styles.css'
 import { RestaurantRead } from 'express-react-ts-starter-shared';
 import { MapButton } from '../map-button';
+import { Tray } from '../tray';
 
 export interface IMapData {
   center?: [number, number]
@@ -16,15 +17,21 @@ export interface IMapData {
 
 export class Map implements IRedomComponent {
   el: HTMLElement
+  mapEl: HTMLElement
   map: L.Map
   currentMarkers: L.Marker[] = []
+  tray: Tray
 
   constructor() {
-    this.el = el("div.map")
+    this.el = 
+      el("div.map-container",
+        this.mapEl = el('div.map'),
+        this.tray = new Tray()
+      )
   }
 
   onmount() {
-    this.map = L.map(this.el)
+    this.map = L.map(this.mapEl)
 
     L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -37,7 +44,7 @@ export class Map implements IRedomComponent {
       icon: 'icon-search',
       text: 'Search',
       onClick: () => {
-        console.log('object');
+        this.tray.update({ isOpen: true })
       }
     }).leafletControl.addTo(this.map);
 
@@ -46,7 +53,7 @@ export class Map implements IRedomComponent {
       icon: 'icon-info',
       text: 'Info',
       onClick: () => {
-        console.log('object');
+        console.log('info clicked');
       }
     }).leafletControl.addTo(this.map);
   }

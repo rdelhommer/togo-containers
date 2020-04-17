@@ -1,21 +1,15 @@
-.map-button {
-  border: 2px solid rgba(0,0,0,0.2);
-  font-size: 16px;
-  border-radius: 4px;
-  background-color: #FFF;
-  cursor: pointer;
-  line-height: 30px;
-
-  overflow-x: hidden;
-  max-width: 36px;
-  transition: max-width 0.4s ease-out;
-}
-
-.map-button:hover {
-  background-color: #F4F4F4;
-  max-width: 100px;
-}
-
-.map-button i {
+.button--map:not(.button--map--icon-only) i {
   padding-right: 8px;
+}
+
+@media only screen and (min-width: 600px) {
+  .button--map {
+    overflow-x: hidden;
+    max-width: 36px;
+    transition: max-width 0.4s ease-out;
+  }
+
+  .button--map:hover {
+    max-width: 100px;
+  }
 }

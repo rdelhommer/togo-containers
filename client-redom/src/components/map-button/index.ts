@@ -1,11 +1,9 @@
 import * as L from 'leaflet';
 import { el } from 'redom';
 import './styles.css';
+import { IButtonOptions, Button } from '../button';
 
-export interface IMapButtonOptions extends L.ControlOptions {
-  text: string;
-  icon: string;
-  onClick: () => void;
+export interface IMapButtonOptions extends L.ControlOptions, IButtonOptions {
 }
 
 export class MapButton {
@@ -14,25 +12,13 @@ export class MapButton {
   constructor(options?: IMapButtonOptions) {
     let ctor = L.Control.extend({
       onAdd: function(map) {
-        let buttonTextContainer: HTMLSpanElement;
-
-        let ret = el(
-          'button.map-button',
-            el(`i.${options.icon}`, { 'aria-hidden': true }),
-            buttonTextContainer = el('span')
-        );
-        buttonTextContainer.textContent = options.text;
-
-        ret.onclick = () => {
-          options.onClick();
-        };
-
-        // This prevents the map from zooming
-        ret.ondblclick = (e) => {
-          e.stopPropagation();
+        let ret = new Button(options);
+        ret.el.classList.add('button--map')
+        if (!options.text) {
+        ret.el.classList.add('button--map--icon-only')
         }
 
-        return ret;
+        return ret.el;
       },
     
       onRemove: function(map) {
