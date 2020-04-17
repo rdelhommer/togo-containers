@@ -6,7 +6,7 @@ export namespace Enums {
   export enum DisposalMethod {
     Trash,
     Recycle,
-    Compost
+    Compost,
   }
 
   export enum ContainerMaterial {

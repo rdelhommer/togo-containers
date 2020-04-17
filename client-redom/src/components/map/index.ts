@@ -6,6 +6,7 @@ import { IRedomComponent } from '../interfaces';
 import { el } from 'redom';
 import './styles.css'
 import { RestaurantRead } from 'express-react-ts-starter-shared';
+import { MapButton } from '../map-button';
 
 export interface IMapData {
   center?: [number, number]
@@ -30,6 +31,48 @@ export class Map implements IRedomComponent {
       maxZoom: 18,
       id: 'osm.test'
     }).addTo(this.map);
+
+    new MapButton({ 
+      position: 'topright',
+      icon: 'icon-search',
+      text: 'Search',
+      onClick: () => {
+        console.log('object');
+      }
+    }).leafletControl.addTo(this.map);
+
+    new MapButton({ 
+      position: 'topright',
+      icon: 'icon-info',
+      text: 'Info',
+      onClick: () => {
+        console.log('object');
+      }
+    }).leafletControl.addTo(this.map);
+  }
+
+  // TODO: add disclaimer that some paper and plant fiber containers can be composted at home
+  private getPopupMarkup(restaurant: RestaurantRead.IRestaurant) {
+    return `
+      <div class="restaurant-popup">
+        <h2 class="restaurant-popup__header">
+          ${restaurant.name}
+        </h2>
+
+        <div class="restaurant-popup__address">
+          <h3>
+            Address
+          </h3>
+          <p>
+            ${restaurant.address.street}
+            <br/>
+            ${restaurant.address.city}, ${restaurant.address.state} ${restaurant.address.zip}
+          </p>
+        </div>
+        <div class="restaurant-popup__menu">
+        </div>
+      </div>
+    `
   }
 
   update(data: IMapData) {
@@ -44,8 +87,13 @@ export class Map implements IRedomComponent {
     }
 
     data.restaurants.forEach(x => {
-      let marker = L.marker(x.latLng).addTo(this.map)
+      let marker = L.marker(x.latLng).addTo(this.map).bindPopup(this.getPopupMarkup(x))
+      marker.on('click', () => {
+        marker.openPopup();
+      });
+
       this.currentMarkers.push(marker)
     });
   }
+
 }
