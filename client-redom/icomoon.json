@@ -994,8 +994,11 @@
         {
           "ligatures": "spoon-knife, food",
           "name": "spoon-knife",
-          "order": 0,
-          "id": 164
+          "order": 9,
+          "id": 164,
+          "prevSize": 32,
+          "code": 59811,
+          "tempChar": ""
         },
         {
           "ligatures": "leaf, nature",
@@ -1616,7 +1619,7 @@
           "id": 267,
           "prevSize": 32,
           "code": 59914,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "minus, subtract",
@@ -1625,7 +1628,7 @@
           "id": 268,
           "prevSize": 32,
           "code": 59915,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "info, information",
@@ -1634,7 +1637,7 @@
           "id": 269,
           "prevSize": 32,
           "code": 59916,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "cancel-circle, close",
@@ -1921,8 +1924,11 @@
         {
           "ligatures": "arrow-right2, right4",
           "name": "arrow-right2",
-          "order": 0,
-          "id": 317
+          "order": 8,
+          "id": 317,
+          "prevSize": 32,
+          "code": 59964,
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-down-right2, down-right2",
@@ -10496,6 +10502,5 @@
     "showCodes": true,
     "gridSize": 16
   },
-  "uid": -1,
-  "time": 1587093552753
+  "uid": -1
 }

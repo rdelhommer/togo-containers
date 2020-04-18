@@ -56,6 +56,9 @@
 .icon-search:before {
   content: "\e986";
 }
+.icon-spoon-knife:before {
+  content: "\e9a3";
+}
 .icon-plus:before {
   content: "\ea0a";
 }
@@ -64,4 +67,7 @@
 }
 .icon-info:before {
   content: "\ea0c";
+}
+.icon-arrow-right2:before {
+  content: "\ea3c";
 }

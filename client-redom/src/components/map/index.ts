@@ -8,6 +8,7 @@ import './styles.css'
 import { RestaurantRead } from 'express-react-ts-starter-shared';
 import { MapButton } from '../map-button';
 import { Tray } from '../tray';
+import { TabTray } from '../tab-tray';
 
 export interface IMapData {
   center?: [number, number]
@@ -20,13 +21,13 @@ export class Map implements IRedomComponent {
   mapEl: HTMLElement
   map: L.Map
   currentMarkers: L.Marker[] = []
-  tray: Tray
+  tray: TabTray
 
   constructor() {
     this.el = 
       el("div.map-container",
         this.mapEl = el('div.map'),
-        this.tray = new Tray()
+        this.tray = new TabTray()
       )
   }
 
@@ -39,23 +40,25 @@ export class Map implements IRedomComponent {
       id: 'osm.test'
     }).addTo(this.map);
 
-    new MapButton({ 
-      position: 'topright',
-      icon: 'icon-search',
-      text: 'Search',
-      onClick: () => {
-        this.tray.update({ isOpen: true })
-      }
-    }).leafletControl.addTo(this.map);
+    // new MapButton({ 
+    //   position: 'topright',
+    //   icon: 'icon-search',
+    //   // text: 'Search',
+    //   title: 'Search',
+    //   onClick: () => {
+    //     this.tray.update({ isOpen: true })
+    //   }
+    // }).leafletControl.addTo(this.map);
 
-    new MapButton({ 
-      position: 'topright',
-      icon: 'icon-info',
-      text: 'Info',
-      onClick: () => {
-        console.log('info clicked');
-      }
-    }).leafletControl.addTo(this.map);
+    // new MapButton({ 
+    //   position: 'topright',
+    //   icon: 'icon-info',
+    //   // text: 'About',
+    //   title: 'About',
+    //   onClick: () => {
+    //     console.log('info clicked');
+    //   }
+    // }).leafletControl.addTo(this.map);
   }
 
   // TODO: add disclaimer that some paper and plant fiber containers can be composted at home

@@ -7,6 +7,7 @@
     overflow-x: hidden;
     max-width: 36px;
     transition: max-width 0.4s ease-out;
+    will-change: max-width;
   }
 
   .button--map:hover {

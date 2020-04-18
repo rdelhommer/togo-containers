@@ -11,12 +11,12 @@
   opacity: 0.75;
   top: 0px;
   left: 0px;
-  transition: opacity 0.15s ease-out;
+  /* transition: opacity 0.15s ease-out; */
 }
 
 .overlay.overlay--hidden {
   opacity: 0;
   top: -5000px;
   left: -5000px;
-  transition: opacity 0.15s ease-out, top 0s linear 0.15s, left 0s linear 0.15s;
+  /* transition: opacity 0.15s ease-out, top 0s linear 0.15s, left 0s linear 0.15s; */
 }

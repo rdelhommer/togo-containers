@@ -1,10 +1,11 @@
-import { el } from 'redom';
+import { el, setAttr } from 'redom';
 import './styles.css';
 
 export interface IButtonOptions {
   text?: string;
   icon?: string;
   onClick?: () => void;
+  title: string;
 }
 
 export class Button {
@@ -18,6 +19,8 @@ export class Button {
         el(`i.${options.icon}`, { 'aria-hidden': true }),
         buttonTextContainer = options.text ? el('span') : null
     );
+
+    setAttr(this.el, 'title', options.title)
     
     if (buttonTextContainer) {
       buttonTextContainer.textContent = options.text;

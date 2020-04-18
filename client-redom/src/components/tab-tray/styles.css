@@ -1,0 +1,31 @@
+.button--tray-tab {
+  width: 38px;
+}
+
+.button--tray-tab:first-of-type {
+  margin-top: 10px; 
+}
+
+.button--tray-tab {
+  margin-bottom: 10px; 
+}
+
+.tab-tray__button-container {
+  position: relative;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.tab-tray__button-container--tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.tray--tabbed .tray__closer {
+  position: unset;
+  top: unset;
+  left: unset;
+}

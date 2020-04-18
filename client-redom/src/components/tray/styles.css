@@ -6,10 +6,12 @@
   z-index: 2000;
   transition: right 0.3s ease-out;
   background: #f4f4f4;
+  will-change: right;
 }
 
 .tray--open {
   right: 0px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .tray--closed {
