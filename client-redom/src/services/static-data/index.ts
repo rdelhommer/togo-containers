@@ -67,4 +67,20 @@ export const staticData: RestaurantRead.IRestaurant[] = [{
       material: Enums.ContainerMaterial.PaperOrPlantFiber,
     }
   }]
+}, {
+  name: 'Red Sauce Pizza',
+  address: {
+    street: '4641 NE Fremont St',
+    city: 'Portland',
+    state: 'OR',
+    zip: '97213'
+  },
+  latLng: [45.548433, -122.615538],
+  menuItems: [{
+    name: 'Pizza',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Compost,
+      material: Enums.ContainerMaterial.PaperOrPlantFiber,
+    }
+  }]
 }]
