@@ -19,8 +19,8 @@
 }
 
 .tab-tray__button-container {
-  position: relative;
-  right: 50px;
+  position: absolute;
+  right: 370px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,6 +32,11 @@
   flex-direction: column;
 }
 
+.tab-tray__page-container {
+  display: flex;
+  height: 100%;
+}
+
 .tray--tabbed .tray__closer {
   position: unset;
   top: unset;
@@ -39,10 +44,11 @@
 }
 
 .tray--tabbed__page {
-  position: absolute;
   top: 0px;
   display: none;
   visibility: hidden;
+  overflow-y: scroll;
+  padding: 20px;
 }
 
 .tray--tabbed__page--visible {

@@ -90,13 +90,15 @@ export class TabTray extends Tray {
     let buttonContainer = el('div.tab-tray__button-container', 
       [ el('div.tab-tray__button-container--tabs', this.tabButtons), closerContainer ]
     )
+    let trayContainer = el('div.tab-tray__page-container')
 
     mount(this.tray, buttonContainer)
+    mount(this.tray, trayContainer)
 
     this.trayCloser.el.classList.add('button--tray-tab')
 
     Object.keys(this.pageMap).forEach(k => {
-      mount(this.tray, this.pageMap[k])
+      mount(trayContainer, this.pageMap[k])
     })
 
     this.setCurrentTab();
