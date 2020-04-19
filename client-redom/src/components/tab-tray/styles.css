@@ -2,12 +2,20 @@
   width: 38px;
 }
 
-.button--tray-tab:first-of-type {
+.button--tray-tab:first-child {
   margin-top: 10px; 
 }
 
 .button--tray-tab {
   margin-bottom: 10px; 
+}
+
+.button.button--tray-tab--selected {
+  background-color: dodgerblue;
+}
+
+.button.button--tray-tab--selected:hover {
+  background-color: dodgerblue;
 }
 
 .tab-tray__button-container {
@@ -28,4 +36,16 @@
   position: unset;
   top: unset;
   left: unset;
+}
+
+.tray--tabbed__page {
+  position: absolute;
+  top: 0px;
+  display: none;
+  visibility: hidden;
+}
+
+.tray--tabbed__page--visible {
+  display: block;
+  visibility: visible;
 }

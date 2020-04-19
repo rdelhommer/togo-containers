@@ -30,6 +30,7 @@ export class Tray implements IRedomComponent {
           this.trayCloser = new Button({ 
             icon: 'icon-arrow-right2',
             title: 'Collapse Panel',
+            href: '#',
             onClick: () => {
               this.update({ isOpen: false })
             }
@@ -40,6 +41,8 @@ export class Tray implements IRedomComponent {
   }
 
   update(data?: ITrayData) {
+    if (data.isOpen === this.isOpen) return
+
     if (data.isOpen) {
       setAttr(this.tray, 'aria-expanded', 'true');
       this.tray.classList.add('tray--open');
@@ -53,5 +56,7 @@ export class Tray implements IRedomComponent {
       
       this.overlay?.update({ visible: false })
     }
+
+    this.isOpen = data.isOpen
   }
 }

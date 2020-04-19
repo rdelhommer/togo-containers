@@ -1,9 +1,14 @@
 import './styles.css'
 import { ITrayData, ITrayConfig, Tray } from '../tray';
-import { setChildren, mount, el, unmount } from 'redom';
+import { mount, el, unmount } from 'redom';
 import { Button } from '../button';
+import { SearchPage } from '../search-page';
+import { AboutPage } from '../about-page';
+import { DetailsPage } from '../details-page';
+import { IRedomComponent } from '../interfaces';
 
 export interface ITabTrayData extends ITrayData {
+  selectedTab?: string;
 }
 
 export interface ITabTrayConfig extends ITrayConfig {
@@ -11,6 +16,8 @@ export interface ITabTrayConfig extends ITrayConfig {
 
 export class TabTray extends Tray {
   tabButtons: Button[]
+  currentPage: IRedomComponent;
+  pageMap: { [key: string]: IRedomComponent }
 
   constructor(config?: ITabTrayConfig) {
     super(config);
@@ -21,27 +28,61 @@ export class TabTray extends Tray {
       new Button({ 
         icon: 'icon-search',
         title: 'Search',
-        onClick: () => {
+        additionalClasses: ['button--tray-tab'],
+        href: '#search',
+        onClick: (e) => {
           this.update({ isOpen: true })
         }
       }),
       new Button({ 
         icon: 'icon-info',
         title: 'About',
-        onClick: () => {
+        additionalClasses: ['button--tray-tab'],
+        href: '#about',
+        onClick: (e) => {
           this.update({ isOpen: true })
         }
       }),
       new Button({ 
         icon: 'icon-spoon-knife',
         title: 'Restaurant Detail',
-        onClick: () => {
+        additionalClasses: ['button--tray-tab'],
+        href: '#detail',
+        onClick: (e) => {
           this.update({ isOpen: true })
         }
       })
     ]
 
     this.el.classList.add('tray--tabbed')
+    this.pageMap = {
+      '#detail': new DetailsPage(),
+      '#about': new AboutPage(),
+      '#search': new SearchPage()
+    }
+  }
+
+  private setCurrentTab() {
+    this.tabButtons.forEach(x => {
+      if (x.el.href === window.location.href) {
+        x.el.classList.add('button--tray-tab--selected');
+      } else {
+        x.el.classList.remove('button--tray-tab--selected');
+      }
+    })
+
+    Object.keys(this.pageMap).forEach(k => {
+      if (k === window.location.hash) {
+        this.pageMap[k].el.classList.add('tray--tabbed__page--visible')
+        this.currentPage = this.pageMap[k]
+      } else {
+        this.pageMap[k].el.classList.remove('tray--tabbed__page--visible')
+      }
+    })
+
+    if (!window.location.hash) {
+      this.currentPage = null;
+    }
   }
 
   onmount() {
@@ -52,14 +93,34 @@ export class TabTray extends Tray {
 
     mount(this.tray, buttonContainer)
 
-    this.tabButtons.forEach(x => {
-      x.el.classList.add('button--tray-tab')
+    this.trayCloser.el.classList.add('button--tray-tab')
+
+    Object.keys(this.pageMap).forEach(k => {
+      mount(this.tray, this.pageMap[k])
     })
 
-    this.trayCloser.el.classList.add('button--tray-tab')
+    this.setCurrentTab();
+    
+    if (window.location.hash) {
+      this.update({ isOpen: true })
+    }
   }
 
   update(data: ITabTrayData) {
+    let isOpening = this.isOpen !== data.isOpen
+
     super.update(data);
+
+    setTimeout(() => {
+      if (data.selectedTab) {
+        window.location.hash = data.selectedTab
+
+        setTimeout(() => {
+          this.setCurrentTab();
+        }, 10)
+      } else {
+        this.setCurrentTab();
+      }
+    }, isOpening ? 100 : 10);
   }
 }

@@ -39,26 +39,6 @@ export class Map implements IRedomComponent {
       maxZoom: 18,
       id: 'osm.test'
     }).addTo(this.map);
-
-    // new MapButton({ 
-    //   position: 'topright',
-    //   icon: 'icon-search',
-    //   // text: 'Search',
-    //   title: 'Search',
-    //   onClick: () => {
-    //     this.tray.update({ isOpen: true })
-    //   }
-    // }).leafletControl.addTo(this.map);
-
-    // new MapButton({ 
-    //   position: 'topright',
-    //   icon: 'icon-info',
-    //   // text: 'About',
-    //   title: 'About',
-    //   onClick: () => {
-    //     console.log('info clicked');
-    //   }
-    // }).leafletControl.addTo(this.map);
   }
 
   // TODO: add disclaimer that some paper and plant fiber containers can be composted at home
