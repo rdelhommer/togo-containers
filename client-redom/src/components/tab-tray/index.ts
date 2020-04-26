@@ -4,11 +4,12 @@ import { mount, el, unmount } from 'redom';
 import { Button } from '../button';
 import { SearchPage } from '../search-page';
 import { AboutPage } from '../about-page';
-import { DetailsPage } from '../details-page';
+import { DetailsPage, IDetailsPageData } from '../details-page';
 import { IRedomComponent } from '../interfaces';
 
 export interface ITabTrayData extends ITrayData {
   selectedTab?: string;
+  pageData?: IDetailsPageData
 }
 
 export interface ITabTrayConfig extends ITrayConfig {
@@ -16,8 +17,8 @@ export interface ITabTrayConfig extends ITrayConfig {
 
 export class TabTray extends Tray {
   tabButtons: Button[]
-  currentPage: IRedomComponent;
-  pageMap: { [key: string]: IRedomComponent }
+  currentPage: DetailsPage | AboutPage | SearchPage;
+  pageMap: { [key: string]: DetailsPage | AboutPage | SearchPage }
 
   constructor(config?: ITabTrayConfig) {
     super(config);
@@ -62,7 +63,7 @@ export class TabTray extends Tray {
     }
   }
 
-  private setCurrentTab() {
+  private setCurrentTab(pageData) {
     this.tabButtons.forEach(x => {
       if (x.el.href === window.location.href) {
         x.el.classList.add('button--tray-tab--selected');
@@ -75,6 +76,8 @@ export class TabTray extends Tray {
       if (k === window.location.hash) {
         this.pageMap[k].el.classList.add('tray--tabbed__page--visible')
         this.currentPage = this.pageMap[k]
+
+        this.currentPage.update(pageData);
       } else {
         this.pageMap[k].el.classList.remove('tray--tabbed__page--visible')
       }
@@ -101,10 +104,10 @@ export class TabTray extends Tray {
       mount(trayContainer, this.pageMap[k])
     })
 
-    this.setCurrentTab();
-    
     if (window.location.hash) {
       this.update({ isOpen: true })
+    } else {
+      this.setCurrentTab(null);
     }
   }
 
@@ -118,10 +121,10 @@ export class TabTray extends Tray {
         window.location.hash = data.selectedTab
 
         setTimeout(() => {
-          this.setCurrentTab();
+          this.setCurrentTab(data.pageData);
         }, 10)
       } else {
-        this.setCurrentTab();
+        this.setCurrentTab(data.pageData);
       }
     }, isOpening ? 100 : 10);
   }

@@ -8,6 +8,7 @@
 
 .button--tray-tab {
   margin-bottom: 10px; 
+  display: block;
 }
 
 .button.button--tray-tab--selected {

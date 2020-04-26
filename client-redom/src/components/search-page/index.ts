@@ -8,4 +8,7 @@ export class SearchPage implements IRedomComponent {
   constructor() {
     this.el = el(`div.tray--tabbed__page.tray--tabbed__page--search`, 'Search')
   }
+
+  update(data) {
+  }
 }

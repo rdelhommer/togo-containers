@@ -26,4 +26,7 @@ export class AboutPage implements IRedomComponent {
         ])
       ]);
   }
+
+  update(data) {
+  }
 }

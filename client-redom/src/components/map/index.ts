@@ -6,8 +6,6 @@ import { IRedomComponent } from '../interfaces';
 import { el } from 'redom';
 import './styles.css'
 import { RestaurantRead } from 'express-react-ts-starter-shared';
-import { MapButton } from '../map-button';
-import { Tray } from '../tray';
 import { TabTray } from '../tab-tray';
 
 export interface IMapData {
@@ -41,30 +39,6 @@ export class Map implements IRedomComponent {
     }).addTo(this.map);
   }
 
-  // TODO: add disclaimer that some paper and plant fiber containers can be composted at home
-  private getPopupMarkup(restaurant: RestaurantRead.IRestaurant) {
-    return `
-      <div class="restaurant-popup">
-        <h2 class="restaurant-popup__header">
-          ${restaurant.name}
-        </h2>
-
-        <div class="restaurant-popup__address">
-          <h3>
-            Address
-          </h3>
-          <p>
-            ${restaurant.address.street}
-            <br/>
-            ${restaurant.address.city}, ${restaurant.address.state} ${restaurant.address.zip}
-          </p>
-        </div>
-        <div class="restaurant-popup__menu">
-        </div>
-      </div>
-    `
-  }
-
   update(data: IMapData) {
     this.map.setView(data.center, 11);
 
@@ -77,9 +51,14 @@ export class Map implements IRedomComponent {
     }
 
     data.restaurants.forEach(x => {
-      let marker = L.marker(x.latLng).addTo(this.map).bindPopup(this.getPopupMarkup(x))
+      let marker = L.marker(x.latLng).addTo(this.map)
+      
       marker.on('click', () => {
-        marker.openPopup();
+        this.tray.update({
+          isOpen: true,
+          selectedTab: '#detail',
+          pageData: { restaurant: x }
+        })
       });
 
       this.currentMarkers.push(marker)
