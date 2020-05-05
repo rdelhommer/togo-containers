@@ -2,6 +2,7 @@ import { el, setChildren } from 'redom';
 import './styles.css';
 import { IRedomComponent } from '../interfaces';
 import { RestaurantRead } from 'express-react-ts-starter-shared';
+import { Menu } from '../menu';
 
 export interface IDetailsPageData {
   restaurant: RestaurantRead.IRestaurant
@@ -10,6 +11,7 @@ export interface IDetailsPageData {
 export class DetailsPage implements IRedomComponent {
   el: HTMLElement
   cachedData: IDetailsPageData
+  menu: Menu
 
   constructor() {
     this.el = el(`div.tray--tabbed__page.tray--tabbed__page--details`, 'Details')
@@ -22,6 +24,8 @@ export class DetailsPage implements IRedomComponent {
     if (!dataToUse) {
       setChildren(this.el, [el('p', 'Please select a restaurant to see more information')]);
     } else {
+      this.menu = new Menu();
+      this.menu.update({ menuItems: dataToUse.restaurant.menuItems })
       let content = [
         el('h2', dataToUse.restaurant.name),
         el('div.restaurant-popup__address', [
@@ -32,7 +36,7 @@ export class DetailsPage implements IRedomComponent {
             `${dataToUse.restaurant.address.city}, ${dataToUse.restaurant.address.state} ${dataToUse.restaurant.address.zip}`
           ])
         ]),
-        el('div.restaurant-popup__menu')
+        this.menu.el
       ]
   
       setChildren(this.el, content);

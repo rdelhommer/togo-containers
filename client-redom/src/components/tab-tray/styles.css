@@ -50,6 +50,7 @@
   visibility: hidden;
   overflow-y: scroll;
   padding: 20px;
+  width: 100%;
 }
 
 .tray--tabbed__page--visible {

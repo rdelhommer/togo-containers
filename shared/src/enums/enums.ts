@@ -4,14 +4,14 @@ export namespace Enums {
   }
 
   export enum DisposalMethod {
-    Trash,
-    Recycle,
-    Compost,
+    Trash = 'Trash',
+    Recycle = 'Recycle',
+    Compost = 'Compost',
   }
 
   export enum ContainerMaterial {
-    PaperOrPlantFiber,
-    Plastic,
-    Metal
+    PaperOrPlantFiber = 'Paper or Plant Fiber',
+    Plastic = 'Plastic',
+    Metal = 'Metal'
   }
 }
