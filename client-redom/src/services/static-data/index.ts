@@ -83,4 +83,43 @@ export const staticData: RestaurantRead.IRestaurant[] = [{
       material: Enums.ContainerMaterial.PaperOrPlantFiber,
     }
   }]
+}, {
+  name: 'Sushi Sapporo',
+  address: {
+    street: '9738 SE Washington St',
+    extra: 'Suite M',
+    city: 'Portland',
+    state: 'OR',
+    zip: '97216'
+  },
+  latLng: [45.517550, -122.563075],
+  menuItems: [{
+    name: 'Sesame Balls',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.PaperOrPlantFiber,
+    }
+  }, {
+    name: 'Gyoza',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.PaperOrPlantFiber,
+    },
+    extra: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.Plastic,
+      additionalInfo: 'Ramekin'
+    }
+  }, {
+    name: 'All Sushi',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.Plastic,
+    },
+    extra: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.Plastic,
+      additionalInfo: 'Ramekin'
+    }
+  }]
 }]
