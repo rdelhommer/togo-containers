@@ -22,10 +22,12 @@
 .tab-tray__button-container {
   position: absolute;
   right: 370px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+}
+
+.tab-tray__closer-container {
+  position: absolute;
+  right: 370px;
+  bottom: 0px;
 }
 
 .tab-tray__button-container--tabs {

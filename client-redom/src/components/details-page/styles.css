@@ -1,9 +1,3 @@
-.tray--tabbed__page--details {
-  max-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .tray--tabbed__page--details .menu {
   overflow-y: scroll;
 }

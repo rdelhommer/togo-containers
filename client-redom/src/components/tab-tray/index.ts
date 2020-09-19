@@ -89,13 +89,14 @@ export class TabTray extends Tray {
   }
 
   onmount() {
-    let closerContainer = el('div', this.trayCloser)
+    let closerContainer = el('div.tab-tray__closer-container', this.trayCloser)
     let buttonContainer = el('div.tab-tray__button-container', 
-      [ el('div.tab-tray__button-container--tabs', this.tabButtons), closerContainer ]
+      [ el('div.tab-tray__button-container--tabs', this.tabButtons) ]
     )
     let trayContainer = el('div.tab-tray__page-container')
 
     mount(this.tray, buttonContainer)
+    mount(this.tray, closerContainer)
     mount(this.tray, trayContainer)
 
     this.trayCloser.el.classList.add('button--tray-tab')
