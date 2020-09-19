@@ -7,7 +7,7 @@ module.exports = merge(common.config, {
   mode: 'production',
   module: {
     rules: [
-      { test: /\.css$/, use: ['style-loader', 'css-loader?minimize'] },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       common.htmlRule,
       common.tsRule,
       common.jsPre,
