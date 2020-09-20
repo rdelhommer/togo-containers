@@ -122,4 +122,43 @@ export const staticData: RestaurantRead.IRestaurant[] = [{
       additionalInfo: 'Ramekin'
     }
   }]
+}, {
+  name: 'Malka',
+  address: {
+    street: '4546 SE Division St',
+    city: 'Portland',
+    state: 'OR',
+    zip: '97206'
+  },
+  latLng: [45.505092, -122.615143],
+  menuItems: [{
+    name: 'I Have a Lot of Feelings',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.PaperOrPlantFiber,
+    }
+  }, {
+    name: 'Bellflower Salad',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.PaperOrPlantFiber,
+    },
+    extra: {
+      disposalMethod: Enums.DisposalMethod.Recycle,
+      material: Enums.ContainerMaterial.Plastic,
+      additionalInfo: 'Crispy Salad Toppers.  Lid is trash.  Ramekin for dressing is trash'
+    }
+  }, {
+    name: 'Medusa',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.PaperOrPlantFiber,
+    }
+  }, {
+    name: 'Kid Rice Bowl',
+    container: {
+      disposalMethod: Enums.DisposalMethod.Trash,
+      material: Enums.ContainerMaterial.PaperOrPlantFiber,
+    }
+  }]
 }]
