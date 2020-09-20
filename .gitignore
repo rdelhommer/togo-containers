@@ -2,6 +2,7 @@
 client-react/dist
 client-aurelia/dist
 client-redom/dist
+client-svelte/public/build
 server/dist
 shared/dist
 webpack-stats.json
